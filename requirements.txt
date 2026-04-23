@@ -1,0 +1,22 @@
+# Core UI
+PyQt6>=6.6.0
+
+# Numerics + audio
+numpy>=1.24.0
+scipy>=1.11.0
+soundfile>=0.12.1
+pydub>=0.25.1
+
+# Qwen3-TTS (auto keo torch>=2.1, transformers>=4.45)
+qwen-tts>=0.1.0
+
+# GPU toi uu (tuy chon, khuyen dung voi NVIDIA GPU + bf16)
+# pip install -U flash-attn --no-build-isolation
+# flash-attn>=2.5.0
+
+# Model download
+huggingface_hub>=0.24.0
+modelscope>=1.18.0  # alternative cho user o TQ / VN
+
+# Optional
+# vllm-omni>=0.1.0  # neu muon inference voi vLLM
