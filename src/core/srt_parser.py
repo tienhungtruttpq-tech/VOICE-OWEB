@@ -139,3 +139,27 @@ def build_srt_from_durations(
         segs.append(Segment(index=i, start_ms=start, end_ms=end, text=text))
         cursor = end + gap_ms
     return segs
+
+
+class SRTParser:
+    """Lop wrapper tien dung — moi method tra ve list[Segment]."""
+
+    @staticmethod
+    def parse_file(path: str) -> list[Segment]:
+        return parse_file(path)
+
+    @staticmethod
+    def parse_srt(path: str) -> list[Segment]:
+        return parse_srt(path)
+
+    @staticmethod
+    def parse_txt(path: str) -> list[Segment]:
+        return parse_txt(path)
+
+    @staticmethod
+    def export_srt(segments, output_path: str) -> None:
+        return export_srt(segments, output_path)
+
+    @staticmethod
+    def build_from_durations(texts: list[str], durations_ms: list[int], gap_ms: int = 200) -> list[Segment]:
+        return build_srt_from_durations(texts, durations_ms, gap_ms)

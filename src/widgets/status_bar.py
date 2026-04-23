@@ -34,3 +34,6 @@ class AppStatusBar(QStatusBar):
     def set_progress(self, done: int, total: int) -> None:
         self.progress.setMaximum(max(1, total))
         self.progress.setValue(done)
+
+
+StatusBar = AppStatusBar

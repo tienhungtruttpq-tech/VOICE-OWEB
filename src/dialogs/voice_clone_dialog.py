@@ -59,7 +59,7 @@ class _CloneWorker(QThread):
 class VoiceCloneDialog(QDialog):
     profileSaved = pyqtSignal(VoiceProfile)
 
-    def __init__(self, engine: TTSEngine, library=None, parent=None) -> None:
+    def __init__(self, engine: TTSEngine | None = None, library=None, parent=None) -> None:
         super().__init__(parent)
         self.setWindowTitle("Voice Clone — clone tu reference audio")
         self.resize(680, 620)
@@ -159,6 +159,9 @@ class VoiceCloneDialog(QDialog):
             return
         if not test_text:
             QMessageBox.warning(self, "Thieu text", "Nhap cau test.")
+            return
+        if self.engine is None:
+            QMessageBox.warning(self, "Chua co engine", "Engine chua duoc gan vao dialog.")
             return
         if self._worker and self._worker.isRunning():
             QMessageBox.information(self, "Dang xu ly", "Preview dang chay.")

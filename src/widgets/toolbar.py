@@ -44,3 +44,6 @@ class AppToolbar(QToolBar):
         self.a_export.triggered.connect(self.exportProjectRequested)
         self.a_import_proj.triggered.connect(self.importProjectRequested)
         self.a_about.triggered.connect(self.aboutRequested)
+
+
+Toolbar = AppToolbar

@@ -46,7 +46,7 @@ class _DesignWorker(QThread):
 class VoiceDesignDialog(QDialog):
     profileSaved = pyqtSignal(VoiceProfile)
 
-    def __init__(self, engine: TTSEngine, library=None, parent=None) -> None:
+    def __init__(self, engine: TTSEngine | None = None, library=None, parent=None) -> None:
         super().__init__(parent)
         self.setWindowTitle("Voice Design — thiet ke giong")
         self.resize(640, 520)
@@ -126,6 +126,9 @@ class VoiceDesignDialog(QDialog):
         text = self.text_edit.toPlainText().strip()
         if not text:
             QMessageBox.warning(self, "Thieu text", "Vui long nhap text de preview.")
+            return
+        if self.engine is None:
+            QMessageBox.warning(self, "Chua co engine", "Engine chua duoc gan vao dialog.")
             return
         if self._worker and self._worker.isRunning():
             QMessageBox.information(self, "Dang xu ly", "Preview dang chay, vui long doi.")

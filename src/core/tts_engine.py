@@ -79,7 +79,7 @@ class TTSEngine:
         self._loaded_repo_id = None
 
     def _resolve_repo_id(self) -> str:
-        size = self.model_size.lower().replace('.', '_')
+        size = self.model_size.lower()
         if self.mode == self.MODE_CUSTOM:
             key = f'custom_voice_{size}'
         elif self.mode == self.MODE_DESIGN:
@@ -89,7 +89,7 @@ class TTSEngine:
         else:
             raise ValueError(f"Unknown mode: {self.mode}")
         if key not in QWEN3_REPO_IDS:
-            key = key.replace('_0_6b', '_1_7b')
+            key = key.replace('_0.6b', '_1.7b')
         return QWEN3_REPO_IDS[key]
 
     def load(self) -> None:
